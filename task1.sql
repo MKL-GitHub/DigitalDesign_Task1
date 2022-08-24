@@ -1,23 +1,23 @@
--- Задание выполнил в MS SQL
+-- Р—Р°РґР°РЅРёРµ РІС‹РїРѕР»РЅРёР» РІ MS SQL
 
--- Вывод сотрудника с максимальной заработной платой
+-- Р’С‹РІРѕРґ СЃРѕС‚СЂСѓРґРЅРёРєР° СЃ РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ Р·Р°СЂР°Р±РѕС‚РЅРѕР№ РїР»Р°С‚РѕР№
 SELECT MAX(Salary) FROM Employee
 
--- Вывод отдела с самой высокой заработной платой между сотрудниками
+-- Р’С‹РІРѕРґ РѕС‚РґРµР»Р° СЃ СЃР°РјРѕР№ РІС‹СЃРѕРєРѕР№ Р·Р°СЂР°Р±РѕС‚РЅРѕР№ РїР»Р°С‚РѕР№ РјРµР¶РґСѓ СЃРѕС‚СЂСѓРґРЅРёРєР°РјРё
 SELECT DepartmentName FROM Employee
 LEFT JOIN Department 
 ON Department.Id = Employee.Department_Id
 WHERE Salary = (SELECT MAX(Salary) FROM Employee)
 
--- Вывод отдела с максимальной суммарной зарплатой сотрудников
+-- Р’С‹РІРѕРґ РѕС‚РґРµР»Р° СЃ РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ СЃСѓРјРјР°СЂРЅРѕР№ Р·Р°СЂРїР»Р°С‚РѕР№ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
 SELECT TOP 1 DepartmentName FROM Employee
 LEFT JOIN Department 
 ON Department.Id = Employee.Department_Id
 GROUP BY DepartmentName
 ORDER BY SUM(Salary) DESC
 
--- Вывод сотрудника, чье имя начинается на "Р" и заканчивается на "н".
+-- Р’С‹РІРѕРґ СЃРѕС‚СЂСѓРґРЅРёРєР°, С‡СЊРµ РёРјСЏ РЅР°С‡РёРЅР°РµС‚СЃСЏ РЅР° "Р " Рё Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ РЅР° "РЅ".
 SELECT Employee_Name FROM Employee
-WHERE Employee_Name LIKE 'Р%н'
+WHERE Employee_Name LIKE 'Р %РЅ'
 
 
